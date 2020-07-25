@@ -27,9 +27,9 @@ open class MyRepository(
         }
     }
 
-    override suspend fun getDataFromNetwork(myParam: String, callback: ApiCallback<User>) {
+    override suspend fun getDataFromNetwork(callback: ApiCallback<List<User>>) {
         try {
-            val response = asyncAwait { service.getSomething(myParam) }
+            val response = asyncAwait { service.getSomething() }
             callback.onSuccess(response)
         } catch (e: Throwable) {
             callback.onFailed(Throwable(e.message))
