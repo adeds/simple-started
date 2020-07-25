@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">started</string>
+    <string name="something_error">something error</string>
 </resources>

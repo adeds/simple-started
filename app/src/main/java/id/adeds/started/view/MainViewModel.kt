@@ -11,13 +11,13 @@ import id.adeds.started.util.Status
 import kotlinx.coroutines.launch
 
 class MainViewModel(private val repo: MyRepository) : ViewModel() {
-    val results: MutableLiveData<BaseModel<User>> = MutableLiveData()
+    val results: MutableLiveData<BaseModel<List<User>>> = MutableLiveData()
 
-    fun call(param: String) {
+    fun call() {
         results.postValue(BaseModel(Status.LOADING))
         viewModelScope.launch {
-            repo.getDataFromNetwork(param, object : ApiCallback<User> {
-                override fun onSuccess(data: User) {
+            repo.getDataFromNetwork(object : ApiCallback<List<User>> {
+                override fun onSuccess(data: List<User>) {
                     results.postValue(BaseModel(Status.SUCCESS, data))
                 }
 

@@ -14,8 +14,6 @@ interface MyService {
         @Query("yourparam") param: String
     ): MyResponse
 
-    @GET("users/{param}")
-    suspend fun getSomething(
-        @Path("param") param: String
-    ): User
+    @GET("users")
+    suspend fun getSomething(): List<User>
 }
